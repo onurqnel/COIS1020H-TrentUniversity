@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
         {
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
@@ -14,7 +15,6 @@
         },
         {
             "name": ".NET Core Attach",
-
             "type": "coreclr",
             "request": "attach"
         }

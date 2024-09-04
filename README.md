@@ -1,1 +1,1 @@
-# COIS1020H
+# Trent University COIS1020H labs.

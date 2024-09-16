@@ -1,0 +1,58 @@
+# Ignore build output directories
+bin/
+obj/
+
+# User-specific files
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.csproj.user
+*.appconfig
+*.rsuser
+.vscode/
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Other system files
+*.log
+*.lock
+*.tmp
+*.temp
+
+# Rider files
+.idea/
+*.sln.iml
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VSCode extensions & settings
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/*.code-workspace
+
+# DotNet-specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+
+# Ignore the NuGet packages folder in root
+**/packages

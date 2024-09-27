@@ -1,0 +1,15 @@
+/home/onel/git/COIS1020H/Lab4_2/bin/Debug/net8.0/Lab4_2
+/home/onel/git/COIS1020H/Lab4_2/bin/Debug/net8.0/Lab4_2.deps.json
+/home/onel/git/COIS1020H/Lab4_2/bin/Debug/net8.0/Lab4_2.runtimeconfig.json
+/home/onel/git/COIS1020H/Lab4_2/bin/Debug/net8.0/Lab4_2.dll
+/home/onel/git/COIS1020H/Lab4_2/bin/Debug/net8.0/Lab4_2.pdb
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/Lab4_2.GeneratedMSBuildEditorConfig.editorconfig
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/Lab4_2.AssemblyInfoInputs.cache
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/Lab4_2.AssemblyInfo.cs
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/Lab4_2.csproj.CoreCompileInputs.cache
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/Lab4_2.sourcelink.json
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/Lab4_2.dll
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/refint/Lab4_2.dll
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/Lab4_2.pdb
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/Lab4_2.genruntimeconfig.cache
+/home/onel/git/COIS1020H/Lab4_2/obj/Debug/net8.0/ref/Lab4_2.dll

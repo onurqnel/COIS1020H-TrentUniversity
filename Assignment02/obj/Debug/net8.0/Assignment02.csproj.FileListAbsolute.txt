@@ -1,0 +1,15 @@
+/home/onel/git/COIS1020H/Assignment02/bin/Debug/net8.0/Assignment02
+/home/onel/git/COIS1020H/Assignment02/bin/Debug/net8.0/Assignment02.deps.json
+/home/onel/git/COIS1020H/Assignment02/bin/Debug/net8.0/Assignment02.runtimeconfig.json
+/home/onel/git/COIS1020H/Assignment02/bin/Debug/net8.0/Assignment02.dll
+/home/onel/git/COIS1020H/Assignment02/bin/Debug/net8.0/Assignment02.pdb
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/Assignment02.GeneratedMSBuildEditorConfig.editorconfig
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/Assignment02.AssemblyInfoInputs.cache
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/Assignment02.AssemblyInfo.cs
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/Assignment02.csproj.CoreCompileInputs.cache
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/Assignment02.sourcelink.json
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/Assignment02.dll
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/refint/Assignment02.dll
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/Assignment02.pdb
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/Assignment02.genruntimeconfig.cache
+/home/onel/git/COIS1020H/Assignment02/obj/Debug/net8.0/ref/Assignment02.dll

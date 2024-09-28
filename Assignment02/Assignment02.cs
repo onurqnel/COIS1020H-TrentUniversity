@@ -35,7 +35,7 @@ public static class Assignment02
     public static void Main()
     {
         // Declaring variables
-        char regType; 
+        char regType;
         double tempData;
 
         // Characters for region types and quitting
@@ -44,15 +44,15 @@ public static class Assignment02
         // Variables to store total inputs and temperature sums for each region
         int totalEastern = 0, totalCentral = 0, totalWestern = 0;
         double sumWestern = 0, sumCentral = 0, sumEastern = 0;
-        
+
         // Variables to store average temperatures for each region
         double avgWestern = 0, avgCentral = 0, avgEastern = 0;
 
         // Clear the console for fresh input
         Console.Clear();
         Console.Write("Enter a region type: W or w for Western Canada, C or c for Central Canada, and E or e for Eastern Canada, or enter Q or q to quit =>");
-        regType = Convert.ToChar(Console.ReadLine());
-        // OR regType = Console.ReadKey().KeyChar;
+        regType = Console.ReadKey().KeyChar;
+        //regType = Convert.ToChar(Console.ReadLine()); // -> Possible null reference exception
 
         // Loop until the user enters either 'q' or 'Q' to quit
         while (regType != quit && char.ToUpper(regType) != char.ToUpper(quit))
@@ -110,10 +110,11 @@ public static class Assignment02
                 // Handle invalid region input
                 Console.WriteLine("***Invalid region type");
             }
-            
+
             // Ask the user for the next region input or to quit
             Console.Write("Enter a region type: W or w for Western Canada, C or c for Central Canada, and E or e for Eastern Canada, or enter Q or q to quit =>");
-            regType = Convert.ToChar(Console.ReadLine());
+            regType = Console.ReadKey().KeyChar;
+            //regType = Convert.ToChar(Console.ReadLine()); // -> Possible null reference exception
         }
 
         // Display the average temperatures for each region

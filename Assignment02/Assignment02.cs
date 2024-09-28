@@ -50,9 +50,8 @@ public static class Assignment02
 
         // Clear the console for fresh input
         Console.Clear();
-        Console.Write("Enter a region type: W or w for Western Canada, C or c for Central Canada, and E or e for Eastern Canada, or enter Q or q to quit =>");
+        Console.Write("Enter a region type: W or w for Western Canada, C or c for Central Canada, and E or e for Eastern Canada, or enter Q or q to quit => ");
         regType = Console.ReadKey().KeyChar;
-        //regType = Convert.ToChar(Console.ReadLine()); // -> Possible null reference exception
 
         // Loop until the user enters either 'q' or 'Q' to quit
         while (regType != quit && char.ToUpper(regType) != char.ToUpper(quit))
@@ -63,12 +62,12 @@ public static class Assignment02
                 // Ensure the temperature is within the valid range
                 do
                 {
-                    Console.Write("Enter the temperature (>= -50C or <= 50C) =>");
+                    Console.Write("\nEnter the temperature (>= -50C or <= 50C) => ");
                     tempData = Convert.ToDouble(Console.ReadLine());
                 }
                 while (tempData < -50.00 || tempData > 50.00);
 
-                // Update Western Canada temprature
+                // Update Western Canada temperature
                 totalWestern++;
                 sumWestern += tempData;
                 avgWestern = sumWestern / totalWestern;
@@ -79,7 +78,7 @@ public static class Assignment02
                 // Ensure the temperature is within the valid range
                 do
                 {
-                    Console.Write("Enter the temperature (>= -50C or <= 50C) =>");
+                    Console.Write("\nEnter the temperature (>= -50C or <= 50C) => ");
                     tempData = Convert.ToDouble(Console.ReadLine());
                 }
                 while (tempData < -50.00 || tempData > 50.00);
@@ -95,7 +94,7 @@ public static class Assignment02
                 // Ensure the temperature is within the valid range
                 do
                 {
-                    Console.Write("Enter the temperature (>= -50C or <= 50C) =>");
+                    Console.Write("\nEnter the temperature (>= -50C or <= 50C) => ");
                     tempData = Convert.ToDouble(Console.ReadLine());
                 }
                 while (tempData < -50.00 || tempData > 50.00);
@@ -108,18 +107,18 @@ public static class Assignment02
             else
             {
                 // Handle invalid region input
-                Console.WriteLine("***Invalid region type");
+                Console.WriteLine("\n***Invalid region type");
             }
 
             // Ask the user for the next region input or to quit
-            Console.Write("Enter a region type: W or w for Western Canada, C or c for Central Canada, and E or e for Eastern Canada, or enter Q or q to quit =>");
+            Console.Write("Enter a region type: W or w for Western Canada, C or c for Central Canada, and E or e for Eastern Canada, or enter Q or q to quit => ");
             regType = Console.ReadKey().KeyChar;
-            //regType = Convert.ToChar(Console.ReadLine()); // -> Possible null reference exception
         }
 
         // Display the average temperatures for each region
-        Console.WriteLine("The average temperature for Western Canada is {0:F2}", avgWestern);
+        Console.WriteLine("\nThe average temperature for Western Canada is {0:F2}", avgWestern);
         Console.WriteLine("The average temperature for Central Canada is {0:F2}", avgCentral);
         Console.WriteLine("The average temperature for Eastern Canada is {0:F2}", avgEastern);
     }
 }
+

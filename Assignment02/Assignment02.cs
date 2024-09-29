@@ -51,7 +51,7 @@ public static class Assignment02
         // Clear the console for fresh input
         Console.Clear();
         Console.Write("Enter a region type: W or w for Western Canada, C or c for Central Canada, and E or e for Eastern Canada, or enter Q or q to quit => ");
-        regType = Console.ReadKey().KeyChar;
+        regType = Convert.ToChar(Console.ReadLine());
 
         // Loop until the user enters either 'q' or 'Q' to quit
         while (regType != quit && char.ToUpper(regType) != char.ToUpper(quit))
@@ -112,7 +112,7 @@ public static class Assignment02
 
             // Ask the user for the next region input or to quit
             Console.Write("Enter a region type: W or w for Western Canada, C or c for Central Canada, and E or e for Eastern Canada, or enter Q or q to quit => ");
-            regType = Console.ReadKey().KeyChar;
+            regType = Convert.ToChar(Console.ReadLine());
         }
 
         // Display the average temperatures for each region

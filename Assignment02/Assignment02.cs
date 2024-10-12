@@ -7,18 +7,20 @@
 * `Assignment02.cs`
 * Description: 
 * This program records and averages temperatures from three regions of Canada: 
-* Western, Central, and Eastern Canada. The user inputs temperatures for each 
-* region, and the program calculates and displays the average temperature for 
-* each region. The program also ensures that the temperatures fall within a valid range.
+* Western, Central, and Eastern. User inputs temperatures for each  region, and 
+* the program calculates and displays the average temperature for each region.
+* Program also ensures that the temperatures fall within a valid range.
+*
 *
 * Data Dictionary:
+******************
 *
 * char regType         - Holds the region type entered by the user.
 * double tempData      - Holds the temperature input by the user.
-* char quit            - Holds the character 'q' for quit.
-* char easternCanada   - Holds the character 'e' for Eastern Canada.
-* char centralCanada   - Holds the character 'c' for Central Canada.
-* char westernCanada   - Holds the character 'w' for Western Canada.
+* const char QUIT             - Holds the character 'q' for quit.
+* const char EASTERN_CANADA   - Holds the character 'e' for Eastern Canada.
+* const char CENTRAL_CANADA   - Holds the character 'c' for Central Canada.
+* const char WESTERN_CANADA   - Holds the character 'w' for Western Canada.
 * int totalEastern     - Counts the number of temperature inputs for Eastern Canada.
 * int totalCentral     - Counts the number of temperature inputs for Central Canada.
 * int totalWestern     - Counts the number of temperature inputs for Western Canada.
@@ -38,8 +40,8 @@ public static class Assignment02
         char regType;
         double tempData;
 
-        // Characters for region types and quitting
-        char quit = 'q', easternCanada = 'e', centralCanada = 'c', westernCanada = 'w';
+        // Constant characters for region types and quit command
+        const char QUIT = 'q', EASTERN_CANADA = 'e', CENTRAL_CANADA = 'c', WESTERN_CANADA = 'w';
 
         // Variables to store total inputs and temperature sums for each region
         int totalEastern = 0, totalCentral = 0, totalWestern = 0;
@@ -53,11 +55,11 @@ public static class Assignment02
         Console.Write("Enter a region type: W or w for Western Canada, C or c for Central Canada, and E or e for Eastern Canada, or enter Q or q to quit => ");
         regType = Convert.ToChar(Console.ReadLine());
 
-        // Loop until the user enters either 'q' or 'Q' to quit
-        while (regType != quit && char.ToUpper(regType) != char.ToUpper(quit))
+        // Loop until the user enters either 'q' or 'Q' in order to quit
+        while (regType != QUIT && char.ToUpper(regType) != char.ToUpper(QUIT))
         {
-            // If region is Western Canada
-            if (regType == westernCanada || char.ToUpper(regType) == char.ToUpper(westernCanada))
+            // Checking if region is Western Canada while ensuring insensitive case input
+            if (regType == WESTERN_CANADA || char.ToUpper(regType) == char.ToUpper(WESTERN_CANADA))
             {
                 // Ensure the temperature is within the valid range
                 do
@@ -72,8 +74,8 @@ public static class Assignment02
                 sumWestern += tempData;
                 avgWestern = sumWestern / totalWestern;
             }
-            // If region is Central Canada
-            else if (regType == centralCanada || char.ToUpper(regType) == char.ToUpper(centralCanada))
+            // Checking if region is Central Canada while ensuring insensitive case input
+            else if (regType == CENTRAL_CANADA || char.ToUpper(regType) == char.ToUpper(CENTRAL_CANADA))
             {
                 // Ensure the temperature is within the valid range
                 do
@@ -88,8 +90,8 @@ public static class Assignment02
                 sumCentral += tempData;
                 avgCentral = sumCentral / totalCentral;
             }
-            // If region is Eastern Canada
-            else if (regType == easternCanada || char.ToUpper(regType) == char.ToUpper(easternCanada))
+            // Checking if region is Eastern Canada while ensuring insensitive case input
+            else if (regType == EASTERN_CANADA || char.ToUpper(regType) == char.ToUpper(EASTERN_CANADA))
             {
                 // Ensure the temperature is within the valid range
                 do

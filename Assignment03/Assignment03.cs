@@ -102,17 +102,21 @@ public static class Assignment03
      */
     public static double ReadAmount()
     {
-        double amount;
+        double amount; // Variable to store the entered amount
+
         do
         {
-            Console.Write("Enter an amount: ");
-            amount = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Enter an amount: "); // Prompt user to enter an amount
+            amount = Convert.ToDouble(Console.ReadLine()); // Read user input and convert it to a double
+
+            // Check if the entered amount is negative
             if (amount < 0)
             {
-                Console.WriteLine("Amount must be non-negative");
+                Console.WriteLine("Amount must be non-negative"); // Show error message if amount is negative
             }
-        } while (amount < 0);
-        return amount;
+        } while (amount < 0); // Repeat loop if amount is negative
+
+        return amount; // Return the valid amount
     }
 
     /*
@@ -138,18 +142,21 @@ public static class Assignment03
      */
     public static void BuyAnItem(double amount, ref double ccBalance)
     {
-        const double HST = 0.13;
-        const double CREDIT_LIMIT = 1500.00;
-        double taxCost = amount * HST;
-        double totalCost = amount + taxCost;
+        const double HST = 0.13; // Sales tax rate (13%)
+        const double CREDIT_LIMIT = 1500.00; // Maximum allowable credit card balance
+
+        double taxCost = amount * HST; // Calculate tax amount on the item
+        double totalCost = amount + taxCost; // Calculate total cost including tax
+
+        // Check if adding the total cost would stay within the credit limit
         if (ccBalance + totalCost <= CREDIT_LIMIT)
         {
-            ccBalance += totalCost;
-            Console.WriteLine("New card balance is {0:C}", ccBalance);
+            ccBalance += totalCost; // Update balance if within limit
+            Console.WriteLine("New card balance is {0:C}", ccBalance); // Display updated balance in currency format
         }
         else
         {
-            Console.WriteLine("Insufficient balance");
+            Console.WriteLine("Insufficient balance"); // Show error if balance would exceed limit
         }
     }
 
@@ -174,17 +181,20 @@ public static class Assignment03
      */
     public static void CashWithdrawal(double amount, ref double ccBalance)
     {
-        const double SERVICE_CHARGE = 2.50;
-        const double CREDIT_LIMIT = 1500.00;
-        double totalWithdrawal = amount + SERVICE_CHARGE;
+        const double SERVICE_CHARGE = 2.50; // Fixed service charge for each withdrawal
+        const double CREDIT_LIMIT = 1500.00; // Maximum allowable credit card balance
+
+        double totalWithdrawal = amount + SERVICE_CHARGE; // Calculate total amount including service charge
+
+        // Check if adding the total withdrawal amount would stay within the credit limit
         if (ccBalance + totalWithdrawal <= CREDIT_LIMIT)
         {
-            ccBalance += totalWithdrawal;
-            Console.WriteLine("New card balance is {0:C}", ccBalance);
+            ccBalance += totalWithdrawal; // Update balance if within limit
+            Console.WriteLine("New card balance is {0:C}", ccBalance); // Display updated balance in currency format
         }
         else
         {
-            Console.WriteLine("Insufficient balance for this cash withdrawal.");
+            Console.WriteLine("Insufficient balance for this cash withdrawal."); // Show error if balance would exceed limit
         }
     }
 
@@ -203,8 +213,8 @@ public static class Assignment03
      */
     public static void MakePayment(double amount, ref double ccBalance)
     {
-        ccBalance -= amount;
-        Console.WriteLine("New card balance is {0:C}", ccBalance);
+        ccBalance -= amount; // Subtract the payment amount from the current card balance
+        Console.WriteLine("New card balance is {0:C}", ccBalance); // Display the updated balance in currency format
     }
 
     /*
@@ -219,7 +229,9 @@ public static class Assignment03
      */
     public static void Display(double ccBalance)
     {
-        const double CREDIT_LIMIT = 1500.00;
+        const double CREDIT_LIMIT = 1500.00; // Maximum allowable credit card balance
+
+        // Calculate and display the available credit by subtracting the current balance from the credit limit
         Console.WriteLine("Available card balance is {0:C}", CREDIT_LIMIT - ccBalance);
     }
 }

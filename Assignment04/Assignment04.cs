@@ -177,6 +177,7 @@ public class Assignment04
         Console.WriteLine("Please enter your name");
         string customerName = Console.ReadLine(); // Read customer name and initialize variable with it
         int custSeat = FindCustSeat(seatAssign, customerName); // Verifies that they have not already booked a seat
+        int availableSeat = FindAvailableSeat(seatAssign);
         if (custSeat != -1) // If its booked
         {
             seatAssign[custSeat] = null; // assign null (cancel)
@@ -185,6 +186,10 @@ public class Assignment04
                 customerName,
                 custSeat
             ); // let them know
+        }
+        else if (availableSeat == 0 && custSeat == -1)
+        {
+            Console.WriteLine("Can not cancel because plane is empty");
         }
         else
         {
@@ -203,6 +208,7 @@ public class Assignment04
      */
     public static void DisplaySeat(string[] seatAssign)
     {
+        bool isEmpty = true;
         // Loop through each element in the seatAssign array
         for (int i = 0; i < seatAssign.Length; ++i)
         {
@@ -211,7 +217,12 @@ public class Assignment04
             {
                 // Display the reserved name and seat index
                 Console.WriteLine("{0} has been reserved for the seat {1}", seatAssign[i], i);
+                isEmpty = false;
             }
+        }
+        if (isEmpty)
+        {
+            Console.WriteLine("Plane is empty");
         }
     }
 }

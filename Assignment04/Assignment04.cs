@@ -2,7 +2,7 @@
  * Onur (Honor) Onel
  * Student Number: 0865803
  * Student Email: onuronel@trentu.ca
- * Date: 2024-11-03
+ * Date Submitted: 2024-11-11
  *
  * `Assignment04.cs`
  *
@@ -23,44 +23,49 @@ public class Assignment04
 {
     public static void Main()
     {
+        //Variables
+        const char BOOK = 'B', // Book option B || b
+            CANCEL = 'X', // Cancel option X || x
+            DISPLAY = 'D', // Display option D || d
+            QUIT = 'Q'; // Quit Q || q
+        char commandType; // Holds the users option choice
+
+        // Array of the seats
+        string[] seats = new string[10];
+
+        // Menu
         string programName = "Basic Airline Reservation System";
         Console.Clear();
-        Console.WriteLine(programName);
-        for (int i = 0; i < programName.Length; i++)
+        Console.WriteLine(programName); // Print the program name for the menu
+        for (int i = 0; i < programName.Length; i++) // Fashion by dev
         {
             Console.Write('*');
         }
-        const char BOOK = 'B',
-            CANCEL = 'X',
-            DISPLAY = 'D',
-            QUIT = 'Q';
-        char commandType;
-        string[] seats = new string[10];
-
+        // Menu cont.
         Console.WriteLine("\nB: BOOK");
         Console.WriteLine("X: CANCEL");
         Console.WriteLine("D: Display");
         Console.WriteLine("Q: Quit");
         do
         {
-            Console.Write("\nEnter command type: ");
-            commandType = Convert.ToChar(Console.ReadLine());
-            switch (char.ToUpper(commandType))
+            Console.Write("\nEnter command type: "); // Choose the option
+            commandType = Convert.ToChar(Console.ReadLine()); // Read the users option
+            switch (char.ToUpper(commandType)) // Switch between cases based on option
             {
-                case BOOK:
+                case BOOK: // B || b
                     BookSeat(seats);
                     break;
-                case CANCEL:
+                case CANCEL: // X || x
                     CancelSeat(seats);
                     break;
-                case DISPLAY:
+                case DISPLAY: // D || d
                     DisplaySeat(seats);
                     break;
-                case QUIT:
+                case QUIT: // Q || q
                     Console.WriteLine("Quitting the program...");
-                    return;
-                default:
-                    Console.WriteLine("Invalid command type entered.");
+                    return; // Terminates
+                default: // If choice is not equivalent to one of our initialized variables
+                    Console.WriteLine("Invalid command type entered."); // Do default behaviour
                     break;
             }
         } while (commandType != QUIT);
@@ -68,8 +73,8 @@ public class Assignment04
 
     /*
      * Method: FindAvailableSeat
-     * Finds the first available seat in the array of seating assignments.
-     * Returns the index of the first available seat which is null or -1 if the plane is full.
+     * Finds the first available seat in the array of seats.
+     * Returns the index of the first available seat which is first null element or -1 if the plane (array) is full.
      *
      * Parameters:
      * - seatAssign: An array representing the seating assignments, where each element corresponds to a seat.
@@ -77,14 +82,14 @@ public class Assignment04
      */
     public static int FindAvailableSeat(string[] seatAssign)
     {
-        for (int i = 0; i < seatAssign.Length; ++i)
+        for (int i = 0; i < seatAssign.Length; ++i) // Loop through array 0 to last element
         {
-            if (seatAssign[i] == null)
+            if (seatAssign[i] == null) // Find the first null element starting from 0th element
             {
-                return i;
+                return i; // return the first null elements index
             }
         }
-        return -1;
+        return -1; // otherwise (plane full) return -1, ussualy means error.
     }
 
     /*
@@ -100,14 +105,14 @@ public class Assignment04
      */
     public static int FindCustSeat(string[] seatAssign, string cName)
     {
-        for (int i = 0; i < seatAssign.Length; ++i)
+        for (int i = 0; i < seatAssign.Length; ++i) // Loop through array 0 to last element
         {
-            if (cName == seatAssign[i])
+            if (cName == seatAssign[i]) // Finds the seat index of the specified customer name
             {
-                return i;
+                return i; // return index
             }
         }
-        return -1;
+        return -1; // otherwise (name not found) return -1, ussualy means error.
     }
 
     /*
@@ -126,29 +131,29 @@ public class Assignment04
      */
     public static void BookSeat(string[] seatAssign)
     {
-        Console.WriteLine("\n-Welcome to booking-");
+        Console.WriteLine("\n-Welcome to booking-"); // Greetings
         Console.WriteLine("Please enter your name");
-        string customerName = Console.ReadLine();
-        int custSeat = FindCustSeat(seatAssign, customerName);
-        if (custSeat != -1)
+        string customerName = Console.ReadLine(); // Read customer name and initialize variable with it
+        int custSeat = FindCustSeat(seatAssign, customerName); // Verifies that they have not already booked a seat
+        if (custSeat != -1) // If its booked
         {
-            Console.WriteLine("{0} already have booking for the seat {1}", customerName, custSeat);
+            Console.WriteLine("{0} already have booking for the seat {1}", customerName, custSeat); // let them know
         }
         else
         {
-            int availableSeat = FindAvailableSeat(seatAssign);
-            if (availableSeat >= 0)
+            int availableSeat = FindAvailableSeat(seatAssign); // Find the first avaliable seat, first null element.
+            if (availableSeat >= 0 && availableSeat <= 10) // if avaliable seat is one of the null elements then,
             {
-                seatAssign[availableSeat] = customerName;
+                seatAssign[availableSeat] = customerName; // Assign the name to it
                 Console.WriteLine(
                     "Seat {0} has been successfully reserved for {1}",
                     availableSeat,
                     customerName
-                );
+                ); // let them know
             }
             else
             {
-                Console.WriteLine("Plane is full");
+                Console.WriteLine("Plane is full"); // Otherwise let them know
             }
         }
     }
@@ -168,22 +173,22 @@ public class Assignment04
      */
     public static void CancelSeat(string[] seatAssign)
     {
-        Console.WriteLine("\n-Welcome to cancelling-");
+        Console.WriteLine("\n-Welcome to cancelling-"); //Greetings
         Console.WriteLine("Please enter your name");
-        string customerName = Console.ReadLine();
-        int custSeat = FindCustSeat(seatAssign, customerName);
-        if (custSeat != -1)
+        string customerName = Console.ReadLine(); // Read customer name and initialize variable with it
+        int custSeat = FindCustSeat(seatAssign, customerName); // Verifies that they have not already booked a seat
+        if (custSeat != -1) // If its booked
         {
-            seatAssign[custSeat] = null;
+            seatAssign[custSeat] = null; // assign null (cancel)
             Console.WriteLine(
                 "Booking for {0} has been successfully canceled from seat {1}.",
                 customerName,
                 custSeat
-            );
+            ); // let them know
         }
         else
         {
-            Console.WriteLine("Customer name does not have seat on this plane");
+            Console.WriteLine("Customer name does not have seat on this plane"); // Otherwise let them know
         }
     }
 
@@ -198,10 +203,13 @@ public class Assignment04
      */
     public static void DisplaySeat(string[] seatAssign)
     {
+        // Loop through each element in the seatAssign array
         for (int i = 0; i < seatAssign.Length; ++i)
         {
+            // Check if the seat at index i has been reserved (not null)
             if (seatAssign[i] != null)
             {
+                // Display the reserved name and seat index
                 Console.WriteLine("{0} has been reserved for the seat {1}", seatAssign[i], i);
             }
         }

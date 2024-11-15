@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "BVqnL12tB+gMgHVnNcs52wSQ52xgh3XKka1azDHnuNQM9VLCHEOzll66l3un/Fe/AXyP2uG7JLqyQoD0L9+hVA==",
+  "success": true,
+  "projectFilePath": "/home/onel/git/COIS1020H/Lab9/Lab9.csproj",
+  "expectedPackageFiles": [
+    "/home/onel/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.10/microsoft.aspnetcore.app.ref.8.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}

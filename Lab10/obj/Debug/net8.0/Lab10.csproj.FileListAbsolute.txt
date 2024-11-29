@@ -1,0 +1,15 @@
+/home/onel/git/COIS1020H/Lab10/bin/Debug/net8.0/Lab10
+/home/onel/git/COIS1020H/Lab10/bin/Debug/net8.0/Lab10.deps.json
+/home/onel/git/COIS1020H/Lab10/bin/Debug/net8.0/Lab10.runtimeconfig.json
+/home/onel/git/COIS1020H/Lab10/bin/Debug/net8.0/Lab10.dll
+/home/onel/git/COIS1020H/Lab10/bin/Debug/net8.0/Lab10.pdb
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/Lab10.GeneratedMSBuildEditorConfig.editorconfig
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/Lab10.AssemblyInfoInputs.cache
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/Lab10.AssemblyInfo.cs
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/Lab10.csproj.CoreCompileInputs.cache
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/Lab10.sourcelink.json
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/Lab10.dll
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/refint/Lab10.dll
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/Lab10.pdb
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/Lab10.genruntimeconfig.cache
+/home/onel/git/COIS1020H/Lab10/obj/Debug/net8.0/ref/Lab10.dll

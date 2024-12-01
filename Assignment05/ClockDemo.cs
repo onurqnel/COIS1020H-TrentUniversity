@@ -1,9 +1,30 @@
-﻿// ClockDemo class to demonstrate the functionality of the Clock class
+﻿/*
+ * Onur (Honor) Onel
+ * Student Number: 0865803
+ * Student Email: onuronel@trentu.ca
+ * Date Submitted: 2024-11-30
+ *
+ * `ClockDemo.cs`
+ *
+ * Description:
+ * ************
+ *   The `ClockDemo` class demonstrates the functionality of the `Clock` class.
+ *   It includes examples of creating clocks, setting values, performing
+ *   arithmetic operations, and comparing clocks. User input is also utilized
+ *   for customization.
+ */
 public static class ClockDemo
 {
     public static void Main()
     {
         Console.Clear();
+
+        string programName = "Assignment 05: The 12-Hour Clock";
+        Console.WriteLine(programName); // Print the program name
+        for (int i = 0; i < programName.Length; i++) // Fashion by dev
+        {
+            Console.Write('*');
+        }
 
         // Array of Clock objects to demonstrate various scenarios
         Clock[] testClock = new Clock[6];
@@ -19,7 +40,7 @@ public static class ClockDemo
         char period;
 
         // Input for Clock 3
-        Console.WriteLine("Enter the values for Clock 3");
+        Console.WriteLine("\n\nEnter the values for Clock 3");
         Console.Write("Enter the Hour -> ");
         hour = Convert.ToInt32(Console.ReadLine());
         Console.Write("Enter the Minute -> ");
@@ -51,7 +72,7 @@ public static class ClockDemo
         bool isLower = testClock[2] < testClock[3]; // Clock 3 < Clock 4?
 
         // Display clock details
-        Console.WriteLine("\nClock details:");
+        Console.WriteLine("\nDetails:");
         for (int i = 0; i < testClock.Length; i++)
         {
             Console.WriteLine("Clock {0}: {1}", i + 1, testClock[i]);

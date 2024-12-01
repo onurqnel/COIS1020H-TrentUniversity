@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Onur (Honor) Onel
  * Student Number: 0865803
  * Student Email: onuronel@trentu.ca
@@ -70,7 +70,11 @@ public class Clock
             else
             {
                 hours = 12; // Default to 12 if the input is invalid
-                Console.WriteLine("Invalid hour value, it has been set to {}", hours);
+                Console.WriteLine(
+                    "{0} is an invalid hour value. It has been set to {1}",
+                    value,
+                    hours
+                );
             }
         }
     }
@@ -89,7 +93,11 @@ public class Clock
             else
             {
                 minutes = 0; // Default to 0 if the input is invalid
-                Console.WriteLine("Invalid minute value, it has been set to {}", minutes);
+                Console.WriteLine(
+                    "{0} is an invalid minute value. It has been set to {1}",
+                    value,
+                    minutes
+                );
             }
         }
     }
@@ -108,7 +116,11 @@ public class Clock
             else
             {
                 clockPeriod = 'A'; // Default to AM if the input is invalid
-                Console.WriteLine("Invalid clock period, it has been set to {}", clockPeriod);
+                Console.WriteLine(
+                    "{0} is an invalid clock period. It has been set to {1}",
+                    value,
+                    clockPeriod
+                );
             }
         }
     }
@@ -168,7 +180,7 @@ public class Clock
         // If the clocks are in the same period
         if (clk1.ClockPeriod == 'P' && clk2.ClockPeriod == 'P')
         {
-            // Compare hours, if hours are equal compare minutes
+            // Compare hours,if hours are equal.
             if (
                 clk1.Hours > clk2.Hours
                 || (clk1.Hours == clk2.Hours && clk1.Minutes > clk2.Minutes)
@@ -194,23 +206,8 @@ public class Clock
     // Less-than operator to compare two Clock objects.
     public static bool operator <(Clock clk1, Clock clk2)
     {
-        // If the clocks are in the same period
-        if (clk1.ClockPeriod == 'P' && clk2.ClockPeriod == 'P')
-        {
-            // Compare hours, if hours are equal compare minutes
-            if (
-                clk1.Hours < clk2.Hours
-                || (clk1.Hours == clk2.Hours && clk1.Minutes < clk2.Minutes)
-            )
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else if (clk1.ClockPeriod == 'P' && clk2.ClockPeriod != 'P')
+        // Compare hours first, then minutes if hours are equal.
+        if (clk1.Hours < clk2.Hours || (clk1.Hours == clk2.Hours && clk1.Minutes < clk2.Minutes))
         {
             return true;
         }

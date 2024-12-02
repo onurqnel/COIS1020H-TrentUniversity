@@ -2,7 +2,7 @@
  * Onur (Honor) Onel
  * Student Number: 0865803
  * Student Email: onuronel@trentu.ca
- * Date Submitted: 2024-11-30
+ * Date Submitted: 2024-12-01
  *
  * `Assignment05.cs`
  *
@@ -40,7 +40,10 @@ public class Clock
     private int minutes;
     private char clockPeriod;
 
-    // Default constructor initializing the clock to 12:00 AM
+    /*
+     * Default constructor initializes the clock to 12:00 AM
+     * Sets hours to 12, minutes to 0, and the clock period to 'A' AM
+     */
     public Clock()
     {
         hours = 12;
@@ -48,7 +51,11 @@ public class Clock
         clockPeriod = 'A';
     }
 
-    // Three parameter constructor for customization
+    /*
+     * Three parameter constructor initializes the clock with custom values
+     * Validates and sets hours, minutes, and clock period using their respective properties
+     */
+
     public Clock(int hrs, int mins, char cType)
     {
         ClockPeriod = cType; // Use the ClockPeriod property to validate input
@@ -56,16 +63,19 @@ public class Clock
         Minutes = mins; // Use the Minutes property to validate input
     }
 
-    // Property to get and set hours with validation
+    /*
+     * Property to get or set the hour value with validation.
+     * Ensures the hour is between 1 and 12, defaulting to 12 if invalid
+     */
     public int Hours
     {
-        get { return hours; }
+        get { return hours; } // Return the current hour
         set
         {
             // Ensure hours are between 1 and 12
             if (value <= 12 && value >= 1)
             {
-                hours = value;
+                hours = value; // Set to valid hour
             }
             else
             {
@@ -79,16 +89,19 @@ public class Clock
         }
     }
 
-    // Property to get and set minutes with validation
+    /*
+     * Property to get or set the minute value with validation
+     * Ensures the minute is between 0 and 59, defaulting to 0 if invalid
+     */
     public int Minutes
     {
-        get { return minutes; }
+        get { return minutes; } // Return the current minute
         set
         {
             // Ensure minutes are between 0 and 59
             if (value < 60 && value >= 0)
             {
-                minutes = value;
+                minutes = value; // Set to valid minute
             }
             else
             {
@@ -102,20 +115,26 @@ public class Clock
         }
     }
 
-    // Property to get and set the AM/PM period with the validation
+    /*
+     * Property to get or set the clock period (AM/PM) with validation
+     * Ensures the period is either 'A' or 'P', defaulting to 'A' if invalid
+     */
+
     public char ClockPeriod
     {
-        get { return clockPeriod; }
+        get { return clockPeriod; } // Return the current period
         set
         {
+            char upperValue = char.ToUpper(value); // Convert to uppercase
+
             // Ensure the period is either 'A' or 'P'
-            if (char.ToUpper(value) == 'A' || char.ToUpper(value) == 'P') // Achieving insensetive case with the validation
+            if (upperValue == 'A' || upperValue == 'P') // Ensuring case-insensitivity
             {
-                clockPeriod = char.ToUpper(value);
+                clockPeriod = upperValue; // Set to valid period
             }
             else
             {
-                clockPeriod = 'A'; // Default to AM if the input is invalid
+                clockPeriod = 'A'; // Default to 'A' (AM) if the input is invalid
                 Console.WriteLine(
                     "{0} is an invalid clock period. It has been set to {1}",
                     value,
@@ -125,56 +144,70 @@ public class Clock
         }
     }
 
-    // Override ToString() to return the clock time in a formatted string.
+    /*
+     * Overrides ToString() to return the clock time in the format "Hour:MinutePeriod"
+     * using validated property values
+     */
+
     public override string ToString()
     {
         return Hours + ":" + Minutes + ClockPeriod; //Return the Properties since getters has validations
     }
 
-    // Addition operator to add two Clock objects.
+    /*
+     * This method calculates the resulting time by converting the input clocks into total minutes,
+     * handling any overflow in hours and minutes, and determining the correct 12-hour clock period
+     * It ensures proper time wrapping within a 24-hour cycle and adjusts the result to the 12-hour format
+     * before creating and returning a new Clock object
+     */
     public static Clock operator +(Clock clk1, Clock clk2)
     {
-        // Calculate the total hours and minutes.
-        int totalHour = clk1.Hours + clk2.Hours;
-        int totalMinutes = clk1.Minutes + clk2.Minutes;
-        char newPeriod = clk1.ClockPeriod;
-
-        // If totalMinutes exceeds 59.
-        if (totalMinutes >= 60)
+        int hour1 = clk1.Hours;
+        if (clk1.ClockPeriod == 'P' && hour1 != 12)
         {
-            totalHour++; // Add one more hour
-            totalMinutes = totalMinutes % 60; // Update minutes with the remaining (after 60)
+            hour1 += 12; // Convert clk1 to 24-hour format
+        }
+        else if (clk1.ClockPeriod == 'A' && hour1 == 12)
+        {
+            hour1 = 0; // Set to zero if its 12
+        }
+        int hour2 = clk2.Hours;
+        if (clk2.ClockPeriod == 'P' && hour2 != 12)
+        {
+            hour2 += 12; // Convert clk2 to 24-hour format
+        }
+        else if (clk2.ClockPeriod == 'A' && hour2 == 12)
+        {
+            hour2 = 0; // Set to zero if its 12
         }
 
-        // If totalHour exceeds 12.
-        if (totalHour >= 12)
-        {
-            totalHour = totalHour % 12; // Update hours with the remaining (after 12)
+        int totalMinutes1 = (hour1 * 60) + clk1.Minutes; // Calculate total minutes for the first clock
+        int totalMinutes2 = (hour2 * 60) + clk2.Minutes; // Calculate total minutes for the second clock
+        int totalMinutes = totalMinutes1 + totalMinutes2; // Add the total minutes of both clocks
 
-            int amPmFlips = totalHour / 12; // Calculate AM/PM flips
-            if (amPmFlips % 2 != 0)
-            {
-                if (newPeriod == 'A')
-                {
-                    newPeriod = 'P';
-                }
-                else
-                {
-                    newPeriod = 'A';
-                }
-            }
-        }
-        // If totalHour is 0
-        if (totalHour == 0)
-        {
-            totalHour = 12; // reset to 12
-        }
+        // Calculate the final hour by converting total minutes back to hours, ensuring it wraps around a 24-hour clock
+        int finalHour = totalMinutes / 60 % 24;
+        // Calculate the remaining minutes
+        int finalMinute = totalMinutes % 60;
 
-        // Return a new Clock object with the calculated values.
-        return new Clock(totalHour, totalMinutes, newPeriod);
+        char finalPeriod = 'A'; // Default clock period is AM
+        if (finalHour >= 12) // Determine if the final time is in PM
+        {
+            finalPeriod = 'P'; // Switch to PM
+            finalHour -= 12; // Adjust hour to 12-hour format
+        }
+        else if (finalHour == 0)
+        {
+            finalHour = 12; // Adjust midnight to 12 AM
+        }
+        // Return new Clock object with calculated time
+        return new Clock(finalHour, finalMinute, finalPeriod);
     }
 
-    //  Greater-than operator to compare two Clock objects.
+    /*
+     * Compares two Clock objects using the > operator, considering AM/PM,
+     * and then hour and minute values.
+     */
     public static bool operator >(Clock clk1, Clock clk2)
     {
         // If the clocks are in the same period
@@ -203,7 +236,10 @@ public class Clock
         }
     }
 
-    // Less-than operator to compare two Clock objects.
+    /*
+     * Compares two Clock objects using the < operator, prioritizing hour
+     * and minute values within the same period.
+     */
     public static bool operator <(Clock clk1, Clock clk2)
     {
         // Compare hours first, then minutes if hours are equal.

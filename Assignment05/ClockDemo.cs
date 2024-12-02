@@ -2,7 +2,7 @@
  * Onur (Honor) Onel
  * Student Number: 0865803
  * Student Email: onuronel@trentu.ca
- * Date Submitted: 2024-11-30
+ * Date Submitted: 2024-12-01
  *
  * `ClockDemo.cs`
  *

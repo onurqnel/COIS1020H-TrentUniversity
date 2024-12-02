@@ -72,16 +72,21 @@ public class Clock
         get { return hours; } // Return the current hour
         set
         {
+            // Allow 0 for midnight
+            if (value == 0)
+            {
+                hours = 12; // Adjust to 12-hour format
+            }
             // Ensure hours are between 1 and 12
-            if (value <= 12 && value >= 1)
+            else if (value >= 1 && value <= 12)
             {
                 hours = value; // Set to valid hour
             }
             else
             {
-                hours = 12; // Default to 12 if the input is invalid
+                hours = 12; // Default to 12 for invalid input
                 Console.WriteLine(
-                    "{0} is an invalid hour value. It has been set to {1}",
+                    "\n{0} is an invalid hour value. It has been set to {1}",
                     value,
                     hours
                 );
@@ -145,16 +150,6 @@ public class Clock
     }
 
     /*
-     * Overrides ToString() to return the clock time in the format "Hour:MinutePeriod"
-     * using validated property values
-     */
-
-    public override string ToString()
-    {
-        return Hours + ":" + Minutes + ClockPeriod; //Return the Properties since getters has validations
-    }
-
-    /*
      * This method calculates the resulting time by converting the input clocks into total minutes,
      * handling any overflow in hours and minutes, and determining the correct 12-hour clock period
      * It ensures proper time wrapping within a 24-hour cycle and adjusts the result to the 12-hour format
@@ -185,7 +180,7 @@ public class Clock
         int totalMinutes2 = (hour2 * 60) + clk2.Minutes; // Calculate total minutes for the second clock
         int totalMinutes = totalMinutes1 + totalMinutes2; // Add the total minutes of both clocks
 
-        // Calculate the final hour by converting total minutes back to hours, ensuring it wraps around a 24-hour clock
+        // Converting total minutes back to hours
         int finalHour = totalMinutes / 60 % 24;
         // Calculate the remaining minutes
         int finalMinute = totalMinutes % 60;
@@ -200,56 +195,85 @@ public class Clock
         {
             finalHour = 12; // Adjust midnight to 12 AM
         }
-        // Return new Clock object with calculated time
         return new Clock(finalHour, finalMinute, finalPeriod);
     }
 
-    /*
-     * Compares two Clock objects using the > operator, considering AM/PM,
-     * and then hour and minute values.
-     */
+    /**
+    * Compares two Clock objects to determine if the first clock (clk1) represents a time later than the second clock (clk2).
+    * Converts 12-hour format to 24-hour format for accurate comparison.
+    */
     public static bool operator >(Clock clk1, Clock clk2)
     {
-        // If the clocks are in the same period
-        if (clk1.ClockPeriod == 'P' && clk2.ClockPeriod == 'P')
+        int clk1Hours = clk1.Hours;
+        int clk2Hours = clk2.Hours;
+
+        // Convert to 24-hour format for comparison
+        if (clk1.ClockPeriod == 'P' && clk1Hours != 12)
         {
-            // Compare hours,if hours are equal.
-            if (
-                clk1.Hours > clk2.Hours
-                || (clk1.Hours == clk2.Hours && clk1.Minutes > clk2.Minutes)
-            )
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            clk1Hours += 12; // Add 12 for PM times (except 12 PM)
         }
-        else if (clk1.ClockPeriod == 'P' && clk2.ClockPeriod != 'P')
+        if (clk1.ClockPeriod == 'A' && clk1Hours == 12)
         {
-            return true;
+            clk1Hours = 0; // Convert 12 AM to 0
         }
-        else
+
+        if (clk2.ClockPeriod == 'P' && clk2Hours != 12)
         {
-            return false;
+            clk2Hours += 12; // Add 12 for PM times (except 12 PM)
         }
+        if (clk2.ClockPeriod == 'A' && clk2Hours == 12)
+        {
+            clk2Hours = 0; // Convert 12 AM to 0
+        }
+
+        // Compare total time in minutes (hour * 60 + minutes)
+        int clk1TotalMinutes = clk1Hours * 60 + clk1.Minutes;
+        int clk2TotalMinutes = clk2Hours * 60 + clk2.Minutes;
+
+        return clk1TotalMinutes > clk2TotalMinutes;
     }
 
-    /*
-     * Compares two Clock objects using the < operator, prioritizing hour
-     * and minute values within the same period.
+    /**
+     * Compares two Clock objects to determine if the first clock (clk1) represents a time earlier than the second clock (clk2).
+     * Converts 12-hour format to 24-hour format for accurate comparison.
      */
     public static bool operator <(Clock clk1, Clock clk2)
     {
-        // Compare hours first, then minutes if hours are equal.
-        if (clk1.Hours < clk2.Hours || (clk1.Hours == clk2.Hours && clk1.Minutes < clk2.Minutes))
+        int clk1Hours = clk1.Hours;
+        int clk2Hours = clk2.Hours;
+
+        // Convert to 24-hour format for comparison
+        if (clk1.ClockPeriod == 'P' && clk1Hours != 12)
         {
-            return true;
+            clk1Hours += 12; // Add 12 for PM times (except 12 PM)
         }
-        else
+        if (clk1.ClockPeriod == 'A' && clk1Hours == 12)
         {
-            return false;
+            clk1Hours = 0; // Convert 12 AM to 0
         }
+
+        if (clk2.ClockPeriod == 'P' && clk2Hours != 12)
+        {
+            clk2Hours += 12; // Add 12 for PM times (except 12 PM)
+        }
+        if (clk2.ClockPeriod == 'A' && clk2Hours == 12)
+        {
+            clk2Hours = 0; // Convert 12 AM to 0
+        }
+
+        // Compare total time in minutes (hour * 60 + minutes)
+        int clk1TotalMinutes = clk1Hours * 60 + clk1.Minutes;
+        int clk2TotalMinutes = clk2Hours * 60 + clk2.Minutes;
+
+        return clk1TotalMinutes < clk2TotalMinutes;
+    }
+
+    /*
+    * Overrides ToString() to return the clock time in the format "Hour:MinutePeriod"
+    * using validated property values
+    */
+    public override string ToString()
+    {
+        return Hours + ":" + Minutes + ClockPeriod; //Return the Properties since getters has validations
     }
 }

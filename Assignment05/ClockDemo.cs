@@ -35,31 +35,32 @@ public static class ClockDemo
         testClock[3] = new Clock(); // Clock 4: Default constructor
 
         // Variables to hold user input
-        int hour;
+        int hour1;
+        int hour2;
         int min;
         char period;
 
         // Input for Clock 3
         Console.WriteLine("\n\nEnter the values for Clock 3");
         Console.Write("Enter the Hour -> ");
-        hour = Convert.ToInt32(Console.ReadLine());
+        hour1 = Convert.ToInt32(Console.ReadLine());
         Console.Write("Enter the Minute -> ");
         min = Convert.ToInt32(Console.ReadLine());
         Console.Write("Enter the Period (A/P) -> ");
         period = Convert.ToChar(Console.ReadLine());
-        testClock[2].Hours = hour;
+        testClock[2].Hours = hour1;
         testClock[2].Minutes = min;
         testClock[2].ClockPeriod = period;
 
         // Input for Clock 4
         Console.WriteLine("\nEnter the values for Clock 4");
         Console.Write("Enter the Hour -> ");
-        hour = Convert.ToInt32(Console.ReadLine());
+        hour2 = Convert.ToInt32(Console.ReadLine());
         Console.Write("Enter the Minute -> ");
         min = Convert.ToInt32(Console.ReadLine());
         Console.Write("Enter the Period (A/P) -> ");
         period = Convert.ToChar(Console.ReadLine());
-        testClock[3].Hours = hour;
+        testClock[3].Hours = hour2;
         testClock[3].Minutes = min;
         testClock[3].ClockPeriod = period;
 
